@@ -114,18 +114,18 @@ Because accelerated networking on a VM results in lower latency, reduced jitter,
 
 ## Connection Latency
 
-|                                 | Connection Pooling: No | Connection Pooling: Yes |
-|:-------------------------------:|:----------------------:|:-----------------------:|
+|                                    | Connection Pooling: No | Connection Pooling: Yes |
+|:----------------------------------:|:----------------------:|:-----------------------:|
 |   **Accelerated Networking: No**  |        143.34ms        |          8.61ms         |
-|  **Accelerated Networking: Yes**  |        141.57ms        |          3.54ms         |
+|  **Accelerated Networking: Yes**  |        141.57ms        |          7.09ms         |
 
 
 ## Command Latency (without Connection)
 
-|                                          | Connection Pooling: No | Connection Pooling: Yes |
-|:----------------------------------------:|:----------------------:|:-----------------------:|
-|        **Accelerated Networking: No**   |         4.25ms         |          3.54ms         |
-|        **Accelerated Networking: Yes**  |         3.42ms         |          3.3ms          |
+|                                    | Connection Pooling: No | Connection Pooling: Yes |
+|:----------------------------------:|:----------------------:|:-----------------------:|
+|  **Accelerated Networking: No**   |         4.25ms         |          3.54ms         |
+|  **Accelerated Networking: Yes**  |         3.42ms         |          3.3ms          |
 
 
 ## Raw Results
