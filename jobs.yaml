@@ -1,0 +1,61 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: testapp-acc
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: myaksmysqlacr.azurecr.io/testapp
+        imagePullPolicy: Always
+        name: testapp
+        env:
+        - name: MYSQL_CONNECTION
+          valueFrom:
+            secretKeyRef:
+              name: mysql
+              key: connection
+      restartPolicy: Never
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: agentpool
+                  operator: In
+                  values:
+                  - accpool
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: testapp-noacc
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: myaksmysqlacr.azurecr.io/testapp
+        imagePullPolicy: Always
+        name: testapp
+        env:
+        - name: MYSQL_CONNECTION
+          valueFrom:
+            secretKeyRef:
+              name: mysql
+              key: connection
+      restartPolicy: Never
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: agentpool
+                  operator: In
+                  values:
+                  - noaccpool
